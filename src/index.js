@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import Axios from './Components/Axios';
 import ComponentServiceSupplies from './Components/ComponentServiceSupplies';
 import EmpleadosDepartamento from './Components/EmpleadosDepartamento';
+import EmpleadosOficios from './Components/EmpleadosOficios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <EmpleadosDepartamento/>
+  <EmpleadosOficios/>
 );
 
 // If you want to start measuring performance in your app, pass a function
