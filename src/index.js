@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Axios from './Components/Axios';
+import ComponentServiceSupplies from './Components/ComponentServiceSupplies';
+import EmpleadosDepartamento from './Components/EmpleadosDepartamento';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <EmpleadosDepartamento/>
 );
 
 // If you want to start measuring performance in your app, pass a function
