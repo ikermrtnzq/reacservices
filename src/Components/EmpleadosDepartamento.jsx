@@ -45,7 +45,7 @@ export default class EmpleadosDepartamento extends Component {
                     <label>Introduzca el ID del departamento</label>
                     <select ref={this.selectDept}>
                         {this.state.departamentos.map((dep, index) => {
-                            return(<option>{dep.numero}</option>)
+                            return(<option value={dep.numero}>{dep.nombre}</option>)
                         })}
                     </select>
                     <button>BUSCAR</button>
