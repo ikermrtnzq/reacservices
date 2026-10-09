@@ -1,26 +1,13 @@
 import axios from 'axios'; 
 import React, {Component} from 'react'; 
 import Global from '../../Global'
+import Empleados from './Empleados';
 
 export default class Departamentos extends Component {
+    selectDept=React.createRef();
     state = {
-        empleados : [],
-        departamentos : []
-    }
-    cajaDep = React.createRef();
-    selectDept =React.createRef();
-    conseguirEmpleados = (event) => {
-        event.preventDefault();
-        let id = this.selectDept.current.value;
-        let url = Global.urlEmpleados;
-        let endPoint ="api/Empleados/EmpleadosDepartamento/" +id;
-
-        axios.get(url + endPoint).then((response) => {
-            console.log(response.data)
-            this.setState({
-                empleados: response.data
-            })
-        })
+        departamentos : [],
+        idDept : 0
     }
     conseguirDepartamentos = () => {
         let url = Global.urlDepartamentos;
@@ -33,31 +20,35 @@ export default class Departamentos extends Component {
             })
         })
     }
+    buscarEmpleados =(event) => {
+        event.preventDefault();
+        let id = this.selectDept.current.value;
+
+        this.setState({
+            idDept: id
+        })
+
+    }
     componentDidMount =() =>{
         this.conseguirDepartamentos();
     }
     
+    
     render(){
         return(
             <div>
-                <h1>Empleados Departamento</h1>
-                <form onSubmit={this.conseguirEmpleados}>
-                    <label>Introduzca el ID del departamento</label>
+                <h1>Departamentos</h1>
+                <form >
+                    <label>Seleccione DEPARTAMENTO</label>
                     <select ref={this.selectDept}>
                         {this.state.departamentos.map((dep, index) => {
-                            return(<option value={dep.numero}>{dep.nombre}</option>)
+                            return(<option key={index} value={dep.numero}>{dep.nombre}</option>)
                         })}
                     </select>
-                    <button>BUSCAR</button>
+                    <button onClick={this.buscarEmpleados}>BUSCAR</button>
                 </form>
                 {
-                    this.state.empleados.map((empleado, index) => {
-                        return(
-                            <div>
-                                <h3 key={index}>{empleado.apellido}, {empleado.oficio}</h3>
-                            </div>
-                        )
-                    })
+                    this.state.idDept != 0 && (<Empleados idDept={this.state.idDept}/>)
                 }
             </div>
         )

@@ -7,10 +7,12 @@ import Axios from './Components/Axios';
 import ComponentServiceSupplies from './Components/ComponentServiceSupplies';
 import EmpleadosDepartamento from './Components/EmpleadosDepartamento';
 import EmpleadosOficios from './Components/EmpleadosOficios';
+import Departamentos from './Components/MaestroDetalle/Departamentos';
+import Coche from './Components/MaestroDetalle/Coche';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <EmpleadosOficios/>
+  <Coche/>
 );
 
 // If you want to start measuring performance in your app, pass a function
